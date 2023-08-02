@@ -38,4 +38,9 @@ public class FunRestController {
         return "Welcome!\n"+"Here some details about this project: Team: "+this.teamName+" | Coach: "+this.coachName+
                 " | App Version: "+this.appVersion+"\n";
     }
+
+    @RequestMapping(value = "/workout", method = RequestMethod.GET)
+    public String messageWorkout(){
+        return "You're in the endpoint 'Workout' :)";
+    }
 }
