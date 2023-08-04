@@ -1,6 +1,6 @@
 package com.demoworkout.AppWorkout.controllers;
 
-import com.demoworkout.AppWorkout.models.Coach;
+import com.demoworkout.util.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

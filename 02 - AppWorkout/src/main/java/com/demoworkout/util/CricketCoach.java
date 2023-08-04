@@ -1,4 +1,4 @@
-package com.demoworkout.AppWorkout.models;
+package com.demoworkout.util;
 
 import org.springframework.stereotype.Component;
 
