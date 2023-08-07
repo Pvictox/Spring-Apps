@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
 
-    @Autowired
+    /*@Autowired
     public DemoController(Coach theCoach){
         myCoach = theCoach;
     }
-
+*/
+    @Autowired
+    public void setCoach(Coach newCoach){
+        myCoach = newCoach;
+    }
     //Endpoint '/' to check the functionality of the app
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String helloMessage(){
@@ -26,4 +30,6 @@ public class DemoController {
     public String dailyWorkoutEndpoint(){
         return "This is your daily workout: "+myCoach.getDailyWorkout();
     }
+
+
 }
