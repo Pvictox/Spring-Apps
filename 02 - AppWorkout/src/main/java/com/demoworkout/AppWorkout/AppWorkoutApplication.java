@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(
 		scanBasePackages = {"com.demoworkout.AppWorkout",
-		"com.demoworkout.util"}
+		"com.demoworkout.util",
+		"com.demoworkout.configClasses"}
 )
 public class AppWorkoutApplication {
 

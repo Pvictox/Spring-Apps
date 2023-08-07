@@ -12,19 +12,19 @@ public class DemoController {
     private Coach myCoach;
     private Coach friendsCoach;
 
-    /*@Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach){
-        System.out.println("Class Name: "+getClass().getSimpleName());
-        myCoach = theCoach;
-    }*/
-
     @Autowired
+    public DemoController(@Qualifier("swimCoach") Coach theCoach){
+        //System.out.println("Class Name: "+getClass().getSimpleName());
+        myCoach = theCoach;
+    }
+
+   /* @Autowired
     public DemoController(@Qualifier("cricketCoach") Coach theCoach,
                           @Qualifier("cricketCoach") Coach anotherCoach){
         myCoach = theCoach;
         friendsCoach = anotherCoach;
     }
-
+*/
 
     /* @Autowired
     public void setCoach(Coach newCoach){
