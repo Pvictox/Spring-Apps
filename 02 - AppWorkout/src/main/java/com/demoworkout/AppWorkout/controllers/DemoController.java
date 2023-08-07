@@ -2,6 +2,7 @@ package com.demoworkout.AppWorkout.controllers;
 
 import com.demoworkout.util.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,15 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
 
-    /*@Autowired
-    public DemoController(Coach theCoach){
+    @Autowired
+    public DemoController(@Qualifier("tennisCoach") Coach theCoach){
         myCoach = theCoach;
     }
-*/
-    @Autowired
+   /* @Autowired
     public void setCoach(Coach newCoach){
         myCoach = newCoach;
-    }
+    }*/
     //Endpoint '/' to check the functionality of the app
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String helloMessage(){
