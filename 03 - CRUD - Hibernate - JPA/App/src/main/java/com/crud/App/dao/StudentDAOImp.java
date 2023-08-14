@@ -2,6 +2,7 @@ package com.crud.App.dao;
 
 import com.crud.App.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,27 @@ public class StudentDAOImp implements StudentDAO{
         theQuery.setParameter("param", parameter);
         return theQuery.getResultList();
     }
+
+    @Override
+    @Transactional
+    public int updateStudentbyId(int id) {
+        Student studentFound = getStudentbyId(id);
+        if (studentFound != null){
+            ///Change the email to "updated@upd.com.br"
+            studentFound.setEmail("updated@upd.com.br");
+            entityManager.merge(studentFound); //Update the entity in the DB
+            return 0;
+        }
+        return 1;
+    }
+
+    @Override
+    @Transactional
+    public int updateLastName(String param) {
+        //Query query = entityManager.createQuery("UPDATE Student SET lastName= 'Updated'");
+        Query query = entityManager.createQuery("UPDATE Student SET lastName= 'Changed' WHERE firstName LIKE :param");
+        query.setParameter("param", "%"+param);
+        return query.executeUpdate();
+    }
+
 }

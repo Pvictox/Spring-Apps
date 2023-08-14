@@ -12,4 +12,8 @@ public interface StudentDAO {
     public List<Student> returnAllStudents();
 
     public List<Student> getStudentByFirstName(String parameter);
+
+    public int updateStudentbyId(int id);
+
+    public int updateLastName(String param);
 }

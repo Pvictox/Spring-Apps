@@ -26,8 +26,18 @@ public class AppApplication {
 			//createMultipleStudents(studentDAO);
 			//System.out.println(retrieveStudentById(studentDAO, 400));
 			///getAllStudents(studentDAO);
-			getByFirstName(studentDAO, "Pedro");
+			//getByFirstName(studentDAO, "Pedro");
+			//updateById(studentDAO, 3);
+			updateLastName(studentDAO, "o");
 		};
+	}
+
+	private void updateLastName(StudentDAO studentDAO, String str) {
+		System.out.println("Rows affected: "+studentDAO.updateLastName(str));
+	}
+
+	private void updateById(StudentDAO studentDAO, int i) {
+		studentDAO.updateStudentbyId(i);
 	}
 
 	private void getByFirstName(StudentDAO studentDAO, String firstName) {
