@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class AppApplication {
 
@@ -19,8 +22,29 @@ public class AppApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
-			createNewStudent(studentDAO);
+			//createNewStudent(studentDAO);
+			//createMultipleStudents(studentDAO);
+			System.out.println(retrieveStudentById(studentDAO, 400));
 		};
+	}
+
+	private String retrieveStudentById(StudentDAO studentDAO, int id) {
+		Student searchedStudent = studentDAO.getStudentbyId(id);
+		return searchedStudent!=null ? searchedStudent.toString() : "Não encontrado";
+	}
+
+	//Method created to check the auto increment feature on the database.
+	private void createMultipleStudents(StudentDAO studentDAO) {
+		List<String> nomes = new ArrayList<>(); nomes.add("Pedro"); nomes.add("Carlos"); nomes.add("Maria");
+		List<String> sobrenomes = new ArrayList<>(); sobrenomes.add("Abreu"); sobrenomes.add("Silva"); sobrenomes.add("Ferraz");
+
+		for (String firstName:
+			 nomes) {
+			System.out.println("---- Creating ----");
+			studentDAO.save(new Student(firstName, sobrenomes.get(nomes.indexOf(firstName)), "***"));
+			System.out.println("---- Saving ----");
+		}
+
 	}
 
 	private void createNewStudent(StudentDAO studentDAO){
