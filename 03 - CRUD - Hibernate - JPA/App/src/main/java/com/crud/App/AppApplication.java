@@ -24,24 +24,42 @@ public class AppApplication {
 		return runner -> {
 			//createNewStudent(studentDAO);
 			//createMultipleStudents(studentDAO);
-			System.out.println(retrieveStudentById(studentDAO, 400));
+			//System.out.println(retrieveStudentById(studentDAO, 400));
+			///getAllStudents(studentDAO);
+			getByFirstName(studentDAO, "Pedro");
 		};
+	}
+
+	private void getByFirstName(StudentDAO studentDAO, String firstName) {
+		for (Student std:
+			 studentDAO.getStudentByFirstName(firstName)) {
+			System.out.println("=========\n"+std.toString()+"========\n");
+		}
+	}
+
+	private void getAllStudents(StudentDAO studentDAO) {
+		for (Student student:
+			 studentDAO.returnAllStudents()) {
+			System.out.println("---------------");
+			System.out.println(student.toString());
+			System.out.println("---------------");
+		}
 	}
 
 	private String retrieveStudentById(StudentDAO studentDAO, int id) {
 		Student searchedStudent = studentDAO.getStudentbyId(id);
-		return searchedStudent!=null ? searchedStudent.toString() : "Não encontrado";
+		return searchedStudent!=null ? searchedStudent.toString() : "Not found";
 	}
 
 	//Method created to check the auto increment feature on the database.
 	private void createMultipleStudents(StudentDAO studentDAO) {
-		List<String> nomes = new ArrayList<>(); nomes.add("Pedro"); nomes.add("Carlos"); nomes.add("Maria");
-		List<String> sobrenomes = new ArrayList<>(); sobrenomes.add("Abreu"); sobrenomes.add("Silva"); sobrenomes.add("Ferraz");
+		List<String> first_names = new ArrayList<>(); first_names.add("Pedro"); first_names.add("Carlos"); first_names.add("Maria");
+		List<String> sur_names = new ArrayList<>(); sur_names.add("Abreu"); sur_names.add("Silva"); sur_names.add("Ferraz");
 
 		for (String firstName:
-			 nomes) {
+			 first_names) {
 			System.out.println("---- Creating ----");
-			studentDAO.save(new Student(firstName, sobrenomes.get(nomes.indexOf(firstName)), "***"));
+			studentDAO.save(new Student(firstName, sur_names.get(first_names.indexOf(firstName)), "***"));
 			System.out.println("---- Saving ----");
 		}
 
