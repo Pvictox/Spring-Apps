@@ -28,8 +28,18 @@ public class AppApplication {
 			///getAllStudents(studentDAO);
 			//getByFirstName(studentDAO, "Pedro");
 			//updateById(studentDAO, 3);
-			updateLastName(studentDAO, "o");
+			//updateLastName(studentDAO, "o");
+			//deleteByID(studentDAO, 3);
+			deleteByFirstName(studentDAO, "Pedro");
 		};
+	}
+
+	private void deleteByFirstName(StudentDAO studentDAO, String firstName) {
+		System.out.println(studentDAO.deleteByFirstName(firstName)+" Rows affected");
+	}
+
+	private void deleteByID(StudentDAO studentDAO, int i) {
+		studentDAO.deleteStudentFromID(i);
 	}
 
 	private void updateLastName(StudentDAO studentDAO, String str) {

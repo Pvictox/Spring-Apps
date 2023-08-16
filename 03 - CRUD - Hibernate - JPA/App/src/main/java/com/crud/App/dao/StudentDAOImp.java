@@ -71,4 +71,23 @@ public class StudentDAOImp implements StudentDAO{
         return query.executeUpdate();
     }
 
+    @Override
+    @Transactional
+    public int deleteStudentFromID(int id) {
+        Student studentRemoved = getStudentbyId(id);
+        if ( studentRemoved != null){
+            entityManager.remove(studentRemoved);
+            return 0;
+        }
+        return 1;
+    }
+
+    @Override
+    @Transactional
+    public int deleteByFirstName(String parameter) {
+        Query deleteQuery = entityManager.createQuery("DELETE FROM Student WHERE firstName = :param");
+        deleteQuery.setParameter("param", parameter);
+        return deleteQuery.executeUpdate();
+    }
+
 }

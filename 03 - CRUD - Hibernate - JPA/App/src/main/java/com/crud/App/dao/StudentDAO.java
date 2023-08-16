@@ -16,4 +16,8 @@ public interface StudentDAO {
     public int updateStudentbyId(int id);
 
     public int updateLastName(String param);
+
+    public int deleteStudentFromID(int id);
+
+    public int deleteByFirstName(String parameter);
 }
