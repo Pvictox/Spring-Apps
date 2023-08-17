@@ -23,14 +23,14 @@ public class AppApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
 			//createNewStudent(studentDAO);
-			//createMultipleStudents(studentDAO);
+			createMultipleStudents(studentDAO);
 			//System.out.println(retrieveStudentById(studentDAO, 400));
 			///getAllStudents(studentDAO);
 			//getByFirstName(studentDAO, "Pedro");
 			//updateById(studentDAO, 3);
 			//updateLastName(studentDAO, "o");
 			//deleteByID(studentDAO, 3);
-			deleteByFirstName(studentDAO, "Pedro");
+			//deleteByFirstName(studentDAO, "Pedro");
 		};
 	}
 
